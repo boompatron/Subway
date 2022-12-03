@@ -23,9 +23,7 @@ public class JpaSandwichService extends SandwichService {
 
     @Override
     public Sandwich save(Sandwich sandwich){
-        if(validator.test(sandwich))
-            return repository.save(sandwich);
-        throw new RuntimeException("Sandwich is wrong!");
+        return repository.save(sandwich);
     }
 
     @Override

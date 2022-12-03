@@ -13,11 +13,11 @@ import java.util.UUID;
 public abstract class Sandwich {
     protected long id;
     protected String name;
-    // protected List<Object> toppings;
     protected Bread bread;
     protected Cheese cheese;
     protected Meat meat;
     protected Sauce sauce;
+    protected Vegitable vegitable;
     protected OrderStatus orderStatus;
     protected LocalDateTime createdAt;
 }
