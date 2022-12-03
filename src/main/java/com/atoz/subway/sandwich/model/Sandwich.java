@@ -1,2 +1,23 @@
-package com.atoz.subway.sandwich.model;public class Sandwich {
+package com.atoz.subway.sandwich.model;
+
+import com.atoz.subway.topping.*;
+import lombok.Builder;
+import lombok.Getter;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
+
+
+@Getter
+public abstract class Sandwich {
+    protected long id;
+    protected String name;
+    // protected List<Object> toppings;
+    protected Bread bread;
+    protected Cheese cheese;
+    protected Meat meat;
+    protected Sauce sauce;
+    protected OrderStatus orderStatus;
+    protected LocalDateTime createdAt;
 }

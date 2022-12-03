@@ -1,0 +1,20 @@
+version: '3.2'
+
+services:
+  wsin-mysql:
+    image: mysql
+    # image: mysql/mysql-server:5.7
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: 'test_db'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      TZ: Asia/Seoul
+    ports:
+      - '33006:3306'
+    volumes:
+      - ./init-schema.sql:/docker-entrypoint-initdb.d/init.sql
+
+    command:
+      - 'mysqld'
+      - '--character-set-server=utf8mb4'
+      - '--collation-server=utf8mb4_unicode_ci'
