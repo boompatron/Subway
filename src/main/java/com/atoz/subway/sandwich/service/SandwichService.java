@@ -1,8 +1,6 @@
 package com.atoz.subway.sandwich.service;
 
 import com.atoz.subway.sandwich.model.Sandwich;
-import com.atoz.subway.sandwich.repository.SandwichRepository;
-import com.atoz.subway.sandwich.validator.SandwichValidator;
 
 import java.util.List;
 

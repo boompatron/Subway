@@ -1,7 +1,7 @@
 package com.atoz.subway.sandwich.service;
 
 import com.atoz.subway.sandwich.model.Sandwich;
-import com.atoz.subway.sandwich.repository.SandwichRepository;
+import com.atoz.subway.sandwich.repository.SandwichJpaRepository;
 import com.atoz.subway.sandwich.validator.SandwichValidator;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +11,12 @@ import java.util.List;
 @Service
 public class JpaSandwichService extends SandwichService {
 
-    private final SandwichRepository repository;
+    private final SandwichJpaRepository repository;
 
     private final SandwichValidator validator;
 
 
-    public JpaSandwichService(SandwichRepository repository) {
+    public JpaSandwichService(SandwichJpaRepository repository) {
         this.repository = repository;
         validator = new SandwichValidator();
     }
