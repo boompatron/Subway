@@ -3,9 +3,10 @@ package com.atoz.subway.sandwich.repository;
 import com.atoz.subway.sandwich.model.Sandwich;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SandwichRepository {
-    Sandwich findById(Long id);
+    Optional<Sandwich> findById(Long id);
     List<Sandwich> findAll();
     void deleteAll();
     int count();

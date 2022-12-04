@@ -11,10 +11,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Stream;
 
 import static com.atoz.subway.JdbcUtils.*;
 
@@ -40,14 +38,22 @@ public class SandwichJdbcRepository implements SandwichRepository {
 
 
     @Override
-    public Sandwich findById(Long id) {
-        return null;
+    @Transactional
+    public Optional<Sandwich> findById(Long id) {
+        try {
+            return Optional.ofNullable(
+                    jdbcTemplate.queryForObject("select * from sandwiches where sandwich_id = :sandwichId",
+                            Collections.singletonMap("sandwichId", id),
+                            sandwichRowMapper)
+            );
+        }catch (Exception e) {
+            return Optional.empty();
+        }
     }
 
     @Override
     public List<Sandwich> findAll() {
-        // jdbcTemplate.query("select * from sandwiches")
-        return null;
+        return jdbcTemplate.query("select * from sandwiches", sandwichRowMapper);
     }
 
     @Override
@@ -57,10 +63,17 @@ public class SandwichJdbcRepository implements SandwichRepository {
 
     @Override
     public int count() {
-        return 0;
+        return jdbcTemplate.queryForObject("select count(*) for sandwiches", Collections.emptyMap(), Integer.class);
     }
 
-    private final static RowMapper<Sandwich> SandwichRowMapper = (resultSet, i) -> {
+    public List<Long> getIds(){
+        var sandwiches = findAll();
+        List<Long> ids = new ArrayList<>();
+        sandwiches.forEach(s -> ids.add(s.getId()));
+        return ids;
+    }
+
+    private final static RowMapper<Sandwich> sandwichRowMapper = (resultSet, i) -> {
         var sandwichId = resultSet.getLong("sandwich_id");
         var sandwichName = resultSet.getString("sandwich_name");
         var bread = Bread.valueOf(resultSet.getString("bread"));
@@ -83,7 +96,7 @@ public class SandwichJdbcRepository implements SandwichRepository {
         paramMap.put("sandwichId", sandwich.getId());
         paramMap.put("sandwichName", sandwich.getName());
         paramMap.put("bread", sandwich.getBread().toString());
-        paramMap.put("cheese", sandwich.getBread().toString());
+        paramMap.put("cheese", sandwich.getCheese().toString());
         paramMap.put("meat", sandwich.getMeat().toString());
         paramMap.put("sauce", sandwich.getSauce().toString());
         paramMap.put("vegetable", sandwich.getVegetable().toString());

@@ -2,12 +2,14 @@ package com.atoz.subway.sandwich.model;
 
 import com.atoz.subway.topping.*;
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 
 @Getter
+@ToString
 public class PulledPorkSandwich extends Sandwich {
     public PulledPorkSandwich(
             Bread bread, Cheese cheese, Meat meat, Sauce sauce, Vegetable vegetable,
