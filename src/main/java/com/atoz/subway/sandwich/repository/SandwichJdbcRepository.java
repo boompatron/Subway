@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 import static com.atoz.subway.JdbcUtils.*;
 
@@ -63,8 +62,23 @@ public class SandwichJdbcRepository implements SandwichRepository {
 
     @Override
     public int count() {
-        return jdbcTemplate.queryForObject("select count(*) for sandwiches", Collections.emptyMap(), Integer.class);
+        return jdbcTemplate.queryForObject("select count(*) from sandwiches", Collections.emptyMap(), Integer.class);
     }
+
+    @Override
+    @Transactional
+    public Sandwich update(Sandwich sandwich) {
+        var updateState = jdbcTemplate.update(
+                "update sandwiches set bread = :bread, cheese = :cheese, meat = :meat, sauce = :sauce, vegetable = :vegetable "
+                         + ", price = :price, order_status = :orderStatus "
+                 + "where sandwich_id = :sandwichId",
+                toParamMap(sandwich)
+        );
+        if(updateState != 1)
+            throw new RuntimeException("update Failed!!");
+        return sandwich;
+    }
+
 
     public List<Long> getIds(){
         var sandwiches = findAll();
@@ -93,6 +107,7 @@ public class SandwichJdbcRepository implements SandwichRepository {
     private Map<String, Object> toParamMap(Sandwich sandwich){
 
         var paramMap = new HashMap<String, Object>();
+
         paramMap.put("sandwichId", sandwich.getId());
         paramMap.put("sandwichName", sandwich.getName());
         paramMap.put("bread", sandwich.getBread().toString());
@@ -103,6 +118,7 @@ public class SandwichJdbcRepository implements SandwichRepository {
         paramMap.put("price", sandwich.getPrice());
         paramMap.put("orderStatus", sandwich.getOrderStatus().toString());
         paramMap.put("createdAt", sandwich.getCreatedAt());
+
         return paramMap;
     }
 }

@@ -62,13 +62,14 @@ public class SandwichJdbcRepositoryTest {
     @DisplayName("모두 가져오기 테스트")
     void findAllTest(){
         var allSandwiches = repository.findAll();
+        var size = repository.count();
 
         assertThat(allSandwiches.isEmpty()).isFalse();
-        assertThat(allSandwiches.size()).isEqualTo(10);
+        assertThat(allSandwiches.size()).isEqualTo(size).isEqualTo(10);
     }
 
     @Test
-    @DisplayName("ids만 가져오기 테스트")
+    @DisplayName("ids 만 가져오기 테스트")
     void getIdsTest(){
         var ids = repository.getIds();
 
@@ -87,6 +88,27 @@ public class SandwichJdbcRepositoryTest {
         assertThat(outOfBoundSandwich).isEmpty();
     }
 
+    @Test
+    @DisplayName("샌드위치 수정")
+    void updateTest(){
+        var id = repository.getIds().get(1);
+        var name = repository.findById(id).get().getName();
 
+        if(name.equals("Egg Mayo")){
+            repository.update(new EggMayoSandwich(id,
+                    Bread.HONEY_OAT, Cheese.MOZZARELLA, Meat.PEPPERONI, Sauce.BARBEQUE, Vegetable.LETTUCE,
+                    16000L, OrderStatus.DELAYED, LocalDateTime.now()));
+        }else{
+            repository.update(new PulledPorkSandwich(id,
+                    Bread.HONEY_OAT, Cheese.MOZZARELLA, Meat.PULLED_PORK, Sauce.BARBEQUE, Vegetable.LETTUCE,
+                    16000L, OrderStatus.DELAYED, LocalDateTime.now()));
+        }
+
+        var retrieved = repository.findById(id).get();
+
+        assertThat(retrieved.getPrice()).isEqualTo(16000L);
+        assertThat(retrieved.getOrderStatus()).isEqualTo(OrderStatus.DELAYED);
+
+    }
 
 }

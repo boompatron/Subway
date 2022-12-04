@@ -11,4 +11,5 @@ public interface SandwichRepository {
     void deleteAll();
     int count();
     Sandwich save(Sandwich sandwich);
+    Sandwich update(Sandwich sandwich);
 }
