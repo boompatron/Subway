@@ -7,22 +7,30 @@
 #      username: root
 #      password: test1234!
 spring:
+#   config.activate.on-profile: default
   datasource:
     username: root
     password: sandwich1234!
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost/subway
+#  jpa:
+#    show-sql: true
+#    generate-ddl: true
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#
+#
+#  output:
+#    ansi:
+#      enabled: always
+#logging:
+#  level:
+#    com:
+#      info
 
-  jpa:
-    show-sql: true
-    generate-ddl: true
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-
-
-  output:
-    ansi:
-      enabled: always
-logging:
-  level:
-    com:
-      info
+---
+spring:
+  config.activate.on-profile: test
+  datasource:
+    username: root
+    password: sandwich1234!
+    url: jdbc:mysql://localhost/subway

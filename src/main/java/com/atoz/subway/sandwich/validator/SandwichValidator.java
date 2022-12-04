@@ -2,13 +2,7 @@
 package com.atoz.subway.sandwich.validator;
 
 import com.atoz.subway.sandwich.model.Sandwich;
-import com.atoz.subway.topping.Cheese;
-import com.atoz.subway.topping.Meat;
-import com.atoz.subway.topping.Sauce;
-import com.atoz.subway.topping.Vegitable;
 
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 
 public class SandwichValidator implements Predicate<Sandwich> {

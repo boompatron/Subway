@@ -8,6 +8,6 @@ public interface SandwichRepository {
     Sandwich findById(Long id);
     List<Sandwich> findAll();
     void deleteAll();
-
+    int count();
     Sandwich save(Sandwich sandwich);
 }

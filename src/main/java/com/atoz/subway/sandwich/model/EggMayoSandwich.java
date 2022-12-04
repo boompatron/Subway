@@ -6,33 +6,32 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-
 @Getter
-public class PulledPorkSandwich extends Sandwich {
-    public PulledPorkSandwich(
-            Bread bread, Cheese cheese, Meat meat, Sauce sauce, Vegetable vegetable,
-            long price, OrderStatus orderStatus,LocalDateTime createdAt){
-        this.name = "Pulled Pork";
+public class EggMayoSandwich extends Sandwich {
+    public EggMayoSandwich(
+            Bread bread, Cheese cheese, Meat meat, Sauce sauce, Vegetable vegitable,
+            long price, OrderStatus orderStatus, LocalDateTime createdAt){
+        this.name = "Egg Mayo";
         this.bread = bread;
         this.cheese = cheese;
         this.meat = meat;
         this.sauce = sauce;
-        this.vegetable = vegetable;
+        this.vegetable = vegitable;
         this.price = price;
         this.orderStatus = orderStatus;
         this.createdAt = createdAt;
     }
 
-    public PulledPorkSandwich(Long id,
-            Bread bread, Cheese cheese, Meat meat, Sauce sauce, Vegetable vegetable,
-            long price, OrderStatus orderStatus,LocalDateTime createdAt) {
+    public EggMayoSandwich(Long id,
+                              Bread bread, Cheese cheese, Meat meat, Sauce sauce, Vegetable vegitable,
+                              long price, OrderStatus orderStatus,LocalDateTime createdAt) {
         this.id = id;
-        this.name = "Pulled Pork";
+        this.name = "Egg Mayo";
         this.bread = bread;
         this.cheese = cheese;
         this.meat = meat;
         this.sauce = sauce;
-        this.vegetable = vegetable;
+        this.vegetable = vegitable;
         this.price = price;
         this.orderStatus = orderStatus;
         this.createdAt = createdAt;

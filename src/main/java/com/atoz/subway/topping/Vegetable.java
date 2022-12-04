@@ -1,6 +1,6 @@
 package com.atoz.subway.topping;
 
-public enum Vegitable {
+public enum Vegetable {
     LETTUCE,
     TOMATO,
     JALAPENO,
