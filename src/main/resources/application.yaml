@@ -33,4 +33,4 @@ spring:
   datasource:
     username: root
     password: sandwich1234!
-    url: jdbc:mysql://localhost/subway
+    url: jdbc:mysql://localhost/subway_test

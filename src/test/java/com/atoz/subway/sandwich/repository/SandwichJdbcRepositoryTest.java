@@ -20,25 +20,9 @@ import java.time.LocalDateTime;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-// @SpringJUnitConfig
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ActiveProfiles("test")
 public class SandwichJdbcRepositoryTest {
-
-//    @Configuration
-//    @ComponentScan(basePackages = "com.atoz.subway.sandwich")
-//    static class Config{
-//        @Bean
-//        public JdbcTemplate jdbcTemplate(DataSource dataSource){
-//            return new JdbcTemplate(dataSource);
-//        }
-//
-//        @Bean
-//        public NamedParameterJdbcTemplate namedParameterJdbcTemplate(JdbcTemplate jdbcTemplate){
-//            return new NamedParameterJdbcTemplate(jdbcTemplate);
-//        }
-//    }
-
     @Autowired
     SandwichJdbcRepository repository;
 
