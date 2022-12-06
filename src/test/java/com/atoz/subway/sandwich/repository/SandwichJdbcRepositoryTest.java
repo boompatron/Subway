@@ -7,20 +7,12 @@ import com.atoz.subway.topping.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import javax.sql.DataSource;
 import java.time.LocalDateTime;
 import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.InstanceOfAssertFactories.COLLECTION;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -38,12 +30,12 @@ public class SandwichJdbcRepositoryTest {
                     i * 1000, OrderStatus.COOKING, LocalDateTime.now()));
     }
 
-    @BeforeAll
+    // @BeforeAll
     void setUp(){
         addTenSandwiches();
     }
 
-    @AfterAll
+    // @AfterAll
     void cleanUp(){
         repository.deleteAll();
     }
@@ -62,7 +54,7 @@ public class SandwichJdbcRepositoryTest {
     @DisplayName("모두 가져오기 테스트")
     void findAllTest(){
         var allSandwiches = repository.findAll();
-        var size = repository.count();
+        var size = repository.countAll();
 
         assertThat(allSandwiches.isEmpty()).isFalse();
         assertThat(allSandwiches.size()).isEqualTo(size).isEqualTo(10);
@@ -71,7 +63,7 @@ public class SandwichJdbcRepositoryTest {
     @Test
     @DisplayName("ids 만 가져오기 테스트")
     void getIdsTest(){
-        var ids = repository.getIds();
+        var ids = repository.getAllIds();
 
         ids.forEach(System.out::println);
     }
@@ -79,7 +71,7 @@ public class SandwichJdbcRepositoryTest {
     @Test
     @DisplayName("id로 찾기 테스트")
     void findByIdTest(){
-        var ids = repository.getIds();
+        var ids = repository.getAllIds();
 
         var thirdSandwich = repository.findById(ids.get(3));
         var outOfBoundSandwich = repository.findById(Collections.max(ids) + 1);
@@ -91,7 +83,7 @@ public class SandwichJdbcRepositoryTest {
     @Test
     @DisplayName("샌드위치 수정")
     void updateTest(){
-        var id = repository.getIds().get(1);
+        var id = repository.getAllIds().get(1);
         var name = repository.findById(id).get().getName();
 
         if(name.equals("Egg Mayo")){

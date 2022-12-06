@@ -3,16 +3,16 @@ package com.atoz.subway.sandwich.service;
 import com.atoz.subway.sandwich.model.Sandwich;
 
 import java.util.List;
+import java.util.Optional;
 
 public abstract class SandwichService {
-
-    // protected final SandwichRepository repository;
-
     abstract Sandwich save(Sandwich sandwich);
 
-    abstract Sandwich findById(Long id);
+    abstract Optional<Sandwich> findById(Long id);
 
     abstract List<Sandwich> findAll();
 
-    abstract long count();
+    abstract Sandwich update(Sandwich sandwich);
+
+    abstract long countAll();
 }

@@ -5,7 +5,6 @@ import com.atoz.subway.sandwich.model.OrderStatus;
 import com.atoz.subway.sandwich.model.PulledPorkSandwich;
 import com.atoz.subway.sandwich.model.Sandwich;
 import com.atoz.subway.topping.*;
-import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -16,7 +15,6 @@ import java.util.*;
 import static com.atoz.subway.JdbcUtils.*;
 
 @Repository
-@Primary
 public class SandwichJdbcRepository implements SandwichRepository {
     private final NamedParameterJdbcTemplate jdbcTemplate;
     public SandwichJdbcRepository(NamedParameterJdbcTemplate jdbcTemplate) {
@@ -61,7 +59,7 @@ public class SandwichJdbcRepository implements SandwichRepository {
     }
 
     @Override
-    public int count() {
+    public int countAll() {
         return jdbcTemplate.queryForObject("select count(*) from sandwiches", Collections.emptyMap(), Integer.class);
     }
 
@@ -80,7 +78,8 @@ public class SandwichJdbcRepository implements SandwichRepository {
     }
 
 
-    public List<Long> getIds(){
+    @Override
+    public List<Long> getAllIds(){
         var sandwiches = findAll();
         List<Long> ids = new ArrayList<>();
         sandwiches.forEach(s -> ids.add(s.getId()));

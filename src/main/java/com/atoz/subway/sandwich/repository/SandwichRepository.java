@@ -9,7 +9,9 @@ public interface SandwichRepository {
     Optional<Sandwich> findById(Long id);
     List<Sandwich> findAll();
     void deleteAll();
-    int count();
+    int countAll();
     Sandwich save(Sandwich sandwich);
     Sandwich update(Sandwich sandwich);
+
+    List<Long> getAllIds();
 }
