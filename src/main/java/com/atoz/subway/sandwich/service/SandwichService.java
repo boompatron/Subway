@@ -10,7 +10,7 @@ public abstract class SandwichService {
 
     abstract Optional<Sandwich> findById(Long id);
 
-    abstract List<Sandwich> findAll();
+    abstract public List<Sandwich> findAll();
 
     abstract Sandwich update(Sandwich sandwich);
 

@@ -16,12 +16,12 @@ public class JdbcSandwichService extends SandwichService {
     }
 
     @Override
-    public Sandwich save(Sandwich sandwich) {
+    Sandwich save(Sandwich sandwich) {
         return repository.save(sandwich);
     }
 
     @Override
-    public Optional<Sandwich> findById(Long id) {
+    Optional<Sandwich> findById(Long id) {
         return repository.findById(id);
     }
 
@@ -31,16 +31,16 @@ public class JdbcSandwichService extends SandwichService {
     }
 
     @Override
-    public Sandwich update(Sandwich sandwich) {
+    Sandwich update(Sandwich sandwich) {
         return repository.update(sandwich);
     }
 
     @Override
-    public long countAll() {
+    long countAll() {
         return repository.countAll();
     }
 
-    public List<Long> getAllIds(){
+    List<Long> getAllIds(){
         return repository.getAllIds();
     }
 }
