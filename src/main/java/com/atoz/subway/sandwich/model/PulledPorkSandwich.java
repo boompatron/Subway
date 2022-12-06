@@ -11,32 +11,28 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 public class PulledPorkSandwich extends Sandwich {
-    public PulledPorkSandwich(
-            Bread bread, Cheese cheese, Meat meat, Sauce sauce, Vegetable vegetable,
-            long price, OrderStatus orderStatus,LocalDateTime createdAt){
+    public PulledPorkSandwich(LocalDateTime createdAt){
         this.name = "Pulled Pork";
-        this.bread = bread;
-        this.cheese = cheese;
-        this.meat = meat;
-        this.sauce = sauce;
-        this.vegetable = vegetable;
-        this.price = price;
-        this.orderStatus = orderStatus;
+        this.bread = Bread.WHEAT;
+        this.cheese = Cheese.MOZZARELLA;
+        this.meat = Meat.PULLED_PORK;
+        this.sauce = Sauce.BARBEQUE;
+        this.vegetable = Vegetable.LETTUCE;
+        this.price = 5600L;
+        this.orderStatus = OrderStatus.IN_ORDER;
         this.createdAt = createdAt;
     }
 
-    public PulledPorkSandwich(Long id,
-            Bread bread, Cheese cheese, Meat meat, Sauce sauce, Vegetable vegetable,
-            long price, OrderStatus orderStatus,LocalDateTime createdAt) {
+    public PulledPorkSandwich(Long id, LocalDateTime createdAt) {
         this.id = id;
         this.name = "Pulled Pork";
-        this.bread = bread;
-        this.cheese = cheese;
-        this.meat = meat;
-        this.sauce = sauce;
-        this.vegetable = vegetable;
-        this.price = price;
-        this.orderStatus = orderStatus;
+        this.bread = Bread.WHEAT;
+        this.cheese = Cheese.MOZZARELLA;
+        this.meat = Meat.PULLED_PORK;
+        this.sauce = Sauce.BARBEQUE;
+        this.vegetable = Vegetable.LETTUCE;
+        this.price = 5600L;
+        this.orderStatus = OrderStatus.IN_ORDER;
         this.createdAt = createdAt;
     }
 }

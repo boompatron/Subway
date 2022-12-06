@@ -24,16 +24,10 @@ class JdbcSandwichServiceTest {
     void addFiveSandwiches(String type){
         if(type.equals("pulled")){
             for(int i = 0; i < 5; i++)
-                service.save(new PulledPorkSandwich(
-                        Bread.WHEAT, Cheese.MOZZARELLA, Meat.PULLED_PORK, Sauce.BARBEQUE, Vegetable.TOMATO,
-                        12500L, OrderStatus.COOKING,LocalDateTime.now())
-                );
+                service.save(new PulledPorkSandwich(LocalDateTime.now()));
         }else if(type.equals("egg")){
             for(int i = 0; i < 5; i++)
-                service.save(new EggMayoSandwich(
-                        Bread.WHEAT, Cheese.MOZZARELLA, Meat.PULLED_PORK, Sauce.BARBEQUE, Vegetable.TOMATO,
-                        13000L, OrderStatus.COOKING,LocalDateTime.now())
-                );
+                service.save(new EggMayoSandwich(LocalDateTime.now()));
         }
     }
 

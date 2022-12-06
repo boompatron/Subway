@@ -10,32 +10,28 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 public class EggMayoSandwich extends Sandwich {
-    public EggMayoSandwich(
-            Bread bread, Cheese cheese, Meat meat, Sauce sauce, Vegetable vegetable,
-            long price, OrderStatus orderStatus, LocalDateTime createdAt){
+    public EggMayoSandwich(LocalDateTime createdAt){
         this.name = "Egg Mayo";
-        this.bread = bread;
-        this.cheese = cheese;
-        this.meat = meat;
-        this.sauce = sauce;
-        this.vegetable = vegetable;
-        this.price = price;
-        this.orderStatus = orderStatus;
+        this.bread = Bread.FLAT_BREAD;
+        this.cheese = Cheese.SHRED;
+        this.meat = Meat.BACON;
+        this.sauce = Sauce.MAYONNAISE;
+        this.vegetable = Vegetable.LETTUCE;
+        this.price = 4500L;
+        this.orderStatus = OrderStatus.IN_ORDER;
         this.createdAt = createdAt;
     }
 
-    public EggMayoSandwich(Long id,
-                              Bread bread, Cheese cheese, Meat meat, Sauce sauce, Vegetable vegetable,
-                              long price, OrderStatus orderStatus,LocalDateTime createdAt) {
+    public EggMayoSandwich(Long id, LocalDateTime createdAt) {
         this.id = id;
         this.name = "Egg Mayo";
-        this.bread = bread;
-        this.cheese = cheese;
-        this.meat = meat;
-        this.sauce = sauce;
-        this.vegetable = vegetable;
-        this.price = price;
-        this.orderStatus = orderStatus;
+        this.bread = Bread.FLAT_BREAD;
+        this.cheese = Cheese.SHRED;
+        this.meat = Meat.BACON;
+        this.sauce = Sauce.MAYONNAISE;
+        this.vegetable = Vegetable.LETTUCE;
+        this.price = 4500L;
+        this.orderStatus = OrderStatus.IN_ORDER;
         this.createdAt = createdAt;
     }
 }

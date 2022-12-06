@@ -23,11 +23,9 @@ public class SandwichJdbcRepositoryTest {
 
     void addTenSandwiches(){
         for(int i = 0; i < 5; i++)
-            repository.save(new PulledPorkSandwich(Bread.WHEAT, Cheese.AMERICAN, Meat.PULLED_PORK, Sauce.BARBEQUE, Vegetable.LETTUCE,
-                    i * 1000, OrderStatus.COOKING, LocalDateTime.now()));
+            repository.save(new PulledPorkSandwich(LocalDateTime.now()));
         for(int i = 0; i < 5; i++)
-            repository.save(new EggMayoSandwich(Bread.FLAT_BREAD, Cheese.MOZZARELLA, Meat.BACON, Sauce.MAYONNAISE, Vegetable.TOMATO,
-                    i * 1000, OrderStatus.COOKING, LocalDateTime.now()));
+            repository.save(new EggMayoSandwich(LocalDateTime.now()));
     }
 
     // @BeforeAll
@@ -43,8 +41,7 @@ public class SandwichJdbcRepositoryTest {
     @Test
     @DisplayName("샌드위치 저장 테스트")
     void saveTest(){
-        var sandwich = new PulledPorkSandwich(Bread.WHEAT, Cheese.AMERICAN, Meat.PULLED_PORK, Sauce.BARBEQUE, Vegetable.LETTUCE,
-                15000, OrderStatus.COOKING, LocalDateTime.now());
+        var sandwich = new PulledPorkSandwich(LocalDateTime.now());
         var retrieved = repository.save(sandwich);
 
         assertThat(sandwich).isEqualTo(retrieved);
@@ -87,13 +84,9 @@ public class SandwichJdbcRepositoryTest {
         var name = repository.findById(id).get().getName();
 
         if(name.equals("Egg Mayo")){
-            repository.update(new EggMayoSandwich(id,
-                    Bread.HONEY_OAT, Cheese.MOZZARELLA, Meat.PEPPERONI, Sauce.BARBEQUE, Vegetable.LETTUCE,
-                    16000L, OrderStatus.DELAYED, LocalDateTime.now()));
+            repository.update(new EggMayoSandwich(id, LocalDateTime.now()));
         }else{
-            repository.update(new PulledPorkSandwich(id,
-                    Bread.HONEY_OAT, Cheese.MOZZARELLA, Meat.PULLED_PORK, Sauce.BARBEQUE, Vegetable.LETTUCE,
-                    16000L, OrderStatus.DELAYED, LocalDateTime.now()));
+            repository.update(new PulledPorkSandwich(id, LocalDateTime.now()));
         }
 
         var retrieved = repository.findById(id).get();

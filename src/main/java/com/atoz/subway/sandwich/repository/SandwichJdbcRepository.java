@@ -1,9 +1,6 @@
 package com.atoz.subway.sandwich.repository;
 
-import com.atoz.subway.sandwich.model.EggMayoSandwich;
-import com.atoz.subway.sandwich.model.OrderStatus;
-import com.atoz.subway.sandwich.model.PulledPorkSandwich;
-import com.atoz.subway.sandwich.model.Sandwich;
+import com.atoz.subway.sandwich.model.*;
 import com.atoz.subway.topping.*;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -99,8 +96,10 @@ public class SandwichJdbcRepository implements SandwichRepository {
         var createdAt = toLocalDateTime(resultSet.getTimestamp("created_at"));
 
         if(sandwichName.equals("Pulled Pork"))
-            return new PulledPorkSandwich(sandwichId, bread, cheese, meat, sauce, vegetable, price, orderStatus, createdAt);
-        return new EggMayoSandwich(sandwichId, bread, cheese, meat, sauce, vegetable, price, orderStatus, createdAt);
+            return new PulledPorkSandwich(sandwichId, createdAt);
+        else if (sandwichName.equals("Egg Mayo"))
+            return new EggMayoSandwich(sandwichId, createdAt);
+        return new CustomSandwich(sandwichId, bread, cheese, meat, sauce, vegetable, price, orderStatus, createdAt);
     };
 
     private Map<String, Object> toParamMap(Sandwich sandwich){
