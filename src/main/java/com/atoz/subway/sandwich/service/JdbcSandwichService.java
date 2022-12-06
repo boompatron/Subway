@@ -16,7 +16,7 @@ public class JdbcSandwichService extends SandwichService {
     }
 
     @Override
-    Sandwich save(Sandwich sandwich) {
+    public Sandwich save(Sandwich sandwich) {
         return repository.save(sandwich);
     }
 

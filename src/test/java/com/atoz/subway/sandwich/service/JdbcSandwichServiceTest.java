@@ -37,7 +37,7 @@ class JdbcSandwichServiceTest {
     void saveTest () {
         // Given
         addFiveSandwiches("pulled");
-
+        addFiveSandwiches("egg");
         // When
 
 
