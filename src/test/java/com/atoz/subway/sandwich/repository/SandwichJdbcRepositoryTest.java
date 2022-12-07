@@ -75,8 +75,8 @@ public class SandwichJdbcRepositoryTest {
         log.info("");
 
         // Then
-        //assertThat(p1.isSame(p2)).isTrue();
-        //assertThat(e1.isSame(e2)).isTrue();
+        assertThat(p1.isSame(p2)).isTrue();
+        assertThat(e1.isSame(e2)).isTrue();
         assertThat(c1.isSame(c2)).isTrue();
     }
 
