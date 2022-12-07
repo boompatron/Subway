@@ -12,8 +12,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -63,16 +61,6 @@ public class SandwichJdbcRepositoryTest {
         var c1 = new CustomSandwich(id, bread, cheese, meat, sauce, vegetable, price, orderStatus, now);
         var c2 = new CustomSandwich(id, bread, cheese, meat, sauce, vegetable, price, orderStatus, now);
 
-        log.info("p1 : " + p1.toString());
-        log.info("p2 : " + p2.toString());
-
-        log.info("e1 : " + e1.toString());
-        log.info("e2 : " + e2.toString());
-
-        log.info("c1 : " + c1.toString());
-        log.info("c2 : " + c2.toString());
-
-        log.info("");
 
         // Then
         assertThat(p1.isSame(p2)).isTrue();
@@ -107,8 +95,8 @@ public class SandwichJdbcRepositoryTest {
             sandwichList.add(repository.findById(id).get());
 
         // Then
-        //for(int i = 0; i < sandwichList.size(); i++)
-        //     assertThat(retrieved.get(i)).is(sandwichList.get(i));
+        for(int i = 0; i < sandwichList.size(); i++)
+             assertThat(retrieved.get(i).isSame(sandwichList.get(i))).isTrue();
 
     }
 
