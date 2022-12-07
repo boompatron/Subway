@@ -7,7 +7,6 @@ import lombok.ToString;
 import java.time.LocalDateTime;
 
 @Getter
-@ToString
 public class CustomSandwich extends Sandwich {
     public CustomSandwich(
                           Bread bread, Cheese cheese, Meat meat, Sauce sauce, Vegetable vegetable,
@@ -36,4 +35,5 @@ public class CustomSandwich extends Sandwich {
         this.orderStatus = orderStatus;
         this.createdAt = createdAt;
     }
+
 }

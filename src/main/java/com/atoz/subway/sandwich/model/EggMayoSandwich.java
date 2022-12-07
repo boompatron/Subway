@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Getter
-@ToString
 public class EggMayoSandwich extends Sandwich {
     public EggMayoSandwich(LocalDateTime createdAt){
         this.name = "Egg Mayo";

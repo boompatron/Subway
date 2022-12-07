@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 
 
 @Getter
-@ToString
 public class PulledPorkSandwich extends Sandwich {
     public PulledPorkSandwich(LocalDateTime createdAt){
         this.name = "Pulled Pork";
