@@ -43,4 +43,9 @@ public class JdbcSandwichService extends SandwichService {
     List<Long> getAllIds(){
         return repository.getAllIds();
     }
+
+    @Override
+    void deleteAll(){
+        repository.deleteAll();
+    }
 }

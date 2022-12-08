@@ -2,7 +2,6 @@ package com.atoz.subway.sandwich.repository;
 
 import com.atoz.subway.sandwich.model.*;
 import com.atoz.subway.topping.*;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,12 +9,10 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-@Slf4j
 @SpringBootTest
 @ActiveProfiles("test")
 public class SandwichJdbcRepositoryTest {
@@ -97,9 +94,5 @@ public class SandwichJdbcRepositoryTest {
         // Then
         for(int i = 0; i < sandwichList.size(); i++)
              assertThat(retrieved.get(i).isSame(sandwichList.get(i))).isTrue();
-
     }
-
-
-
 }

@@ -15,4 +15,6 @@ public abstract class SandwichService {
     abstract Sandwich update(Sandwich sandwich);
 
     abstract long countAll();
+
+    abstract void deleteAll();
 }
